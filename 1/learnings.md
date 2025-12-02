@@ -1,0 +1,3 @@
+- Use structs instead of global variables
+- Can acces string letters like arrays => string = "apple", string[1] = p
+- Using modulu to keep var inside of range
