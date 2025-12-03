@@ -16,14 +16,14 @@ func main() {
 	banks := strings.Fields(string(content))
 	fmt.Printf("Loaded in %s\n", banks)
 	for _, bank := range banks {
-		a := analyzeBank(bank, 12)
+		a := analyseBank(bank, 12)
 		fmt.Printf("The highest combination is : %s\n", a)
 		combs = append(combs, a)
 	}
 	fmt.Printf("The answer is : %d\n", calculateAnswer(combs))
 }
 
-func analyzeBank(bank string, nB int) string {
+func analyseBank(bank string, nB int) string {
 	var values []string
 	var highest_i int
 	for n := 1; n <= nB; n++ {
