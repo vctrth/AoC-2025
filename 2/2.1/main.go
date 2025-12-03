@@ -2,16 +2,18 @@ package main
 
 import (
 	"fmt"
-	"strings"
-	"strconv"
 	"os"
+	"strconv"
+	"strings"
 )
 
-func main(){
+func main() {
 	answer := 0
 
 	content, err := os.ReadFile("../input.txt")
-	if (err != nil){ panic(err) }
+	if err != nil {
+		panic(err)
+	}
 	ids := strings.Split(string(content), ",")
 	var invalidIds = []string{}
 
@@ -23,11 +25,15 @@ func main(){
 		ranges := strings.Split(value, "-")
 
 		range_min, err := strconv.ParseInt(ranges[0], 10, 64)
-		if err != nil { panic(err) }
+		if err != nil {
+			panic(err)
+		}
 
 		range_max, err := strconv.ParseInt(ranges[1], 10, 64)
-		if err != nil { panic(err) }
-		range_max ++
+		if err != nil {
+			panic(err)
+		}
+		range_max++
 
 		fmt.Printf("Checking between %d and %d\n", range_min, range_max)
 		for i := range_min; i < range_max; i++ {
@@ -38,7 +44,7 @@ func main(){
 			left := number[:half]
 			right := number[half:]
 			// fmt.Printf("left: %s right: %s\n", left, right)
-			if(left == right) {
+			if left == right {
 				invalidIds = append(invalidIds, number)
 			}
 		}
@@ -46,7 +52,9 @@ func main(){
 	}
 	for i := 0; i < len(invalidIds); i++ {
 		n, err := strconv.Atoi(invalidIds[int(i)])
-		if err != nil { panic(err) }
+		if err != nil {
+			panic(err)
+		}
 		// fmt.Printf("Adding %d to %d\n", n, answer)
 		answer += n
 	}
